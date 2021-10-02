@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+   <meta charset="utf-8">
+   <meta name="robots" content="noindex,nofollow">
+   <title>野口じゃんけん</title>
+   <link rel = "icon" href = "images/野口じゃんけん.png" 
+        type = "image/x-icon">
+
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+   <link rel="stylesheet" href="style.css">
+   <link rel="stylesheet" href="janken.css">
+
+   <script src="https://code.jquery.com/jquery-2.2.4.js" integrity="sha256-iT6Q9iMJYuQiMWNd9lDyBUStIq/8PuOW33aOqmvFpqI=" crossorigin="anonymous"></script>
+   <script>
+   $(function() {
+      const hum = $('#hamburger, .close')
+      const nav = $('.sp-nav')
+      hum.on('click', function(){
+         nav.toggleClass('toggle');
+      });
+   });
+   </script>
+</head>
+<body>
+   <header>
+	<img width=40 height=40 src="images/noguchi-janken-logo.png">
+      <h1>
+         <a href="/">野口じゃんけん</a>
+      </h1>
+      <nav class="pc-nav">
+         <ul>
+            <li><a href="#">ルール</a></li>
+            <li><a href="#"></a></li>
+            <li><a href="#">情報</a></li>
+            <li><a href="#">CONTACT</a></li>
+         </ul>
+      </nav>
+      <nav class="sp-nav">
+         <ul>
+            <li><a href="#">ルール</a></li>
+            <li><a href="#">SERVICE</a></li>
+            <li><a href="#">COMPANY</a></li>
+            <li><a href="#">CONTACT</a></li>
+            <li class="close"><span>閉じる</span></li>
+         </ul>
+      </nav>
+      <div id="hamburger">
+         <span></span>
+      </div>
+   </header>
+   <div class="first-visual">こんにちは</div>
+   <div >
+	   ようこそ、野口じゃんけんへ。
+   </div>
+   <div class="third-visual"></div>
+   
+</div>
+	<style>
+	  body {
+		text-align: center;
+	  }
+	 
+	</style>
+	 <div class="second-visual">
+		あなた <span id="p-score" >0</span> - <span id="c-score">0</span> 野口
+	</div>
+	<div class="forth-visual"></div>
+	<div class="container">
+	  
+	  <h2>5回勝って優勝しよう！</h2>
+	 
+	  <div class="display-moves">
+		<div class="move">
+		  <img id="p-move" width=50 height=50 src="images/グー.png">
+		</div>
+		<div class="separator">VS</div>
+		<div class="move">
+		  <img id="c-move" width=50 height=50 src="images/グー.png">
+		</div>
+	  </div>
+	  <h2>手を選んでください。<h2>
+	  <div class="action">
+		<input class="options" type="image" width=40 height=40 src="images/グー.png" value="グー" />
+		<input class="options" type="image" width=40 height=40 src="images/チョキ.png" value="チョキ" />
+		<input class="options" type="image" width=40 height=40 src="images/パー.png" value="パー" />
+	  </div>
+	</div>
+	<script>
+	  const options = document.querySelectorAll(".options");
+	  let pScore = 0;
+	  let cScore = 0;
+  
+	  options.forEach((option) => {
+		option.addEventListener("click", function () {
+		  const pInput = this.value;
+  
+		  const cOptions = ["グー", "パー", "チョキ"];
+		  const cInput = cOptions[Math.floor(Math.random() * 3)];
+		  
+		  updateMoves(pInput, cInput);
+		  compareInputs(pInput, cInput);
+		  updateScore();
+		  if(checkWinner()){
+			pScore = cScore= 0;
+			updateScore();
+		  }
+		});
+	  });
+  
+	  function updateMoves(pInput, cInput){
+		document.getElementById("p-move").src = `images/${pInput}.png`;
+		document.getElementById("c-move").src = `images/${cInput}.svg`;
+	  }
+  
+  
+	  function compareInputs(pInput, cInput) {
+		const currentMatch = `${pInput} vs ${cInput}`;
+		if (pInput === cInput) {
+		  alert(`${currentMatch} 引き分けです。もう一度選んでください！`);
+		  return;
+		}
+  
+		if (pInput === "グー") {
+		  if (cInput === "チョキ") {
+			alert(`${currentMatch}  あなたが勝ちました。`);
+			pScore++;
+		  } else {
+			alert(`${currentMatch}  野口が勝ちました。`);
+			cScore++;
+		  }
+		}
+		//Check for Paper
+		else if (pInput === "パー") {
+		  if (cInput === "グー") {
+			alert(`${currentMatch}  あなたが勝ちました。`);
+			pScore++;
+		  } else {
+			alert(`${currentMatch}  野口が勝ちました。`);
+			cScore++;
+		  }
+		}
+		//Check for Scissors
+		else if (pInput === "チョキ") {
+		  if (cInput === "パー") {
+			alert(`${currentMatch}  あなたが勝ちました。`);
+			pScore++;
+		  } else {
+			alert(`${currentMatch}  野口が勝ちました。`);
+			cScore++;
+		  }
+		}
+	  }
+  
+	  function updateScore() {
+		document.getElementById("p-score").textContent = pScore;
+		document.getElementById("c-score").textContent = cScore;
+	  }
+  
+	  function checkWinner() {
+		if (pScore === 5 || cScore === 5) {
+		  const winner =
+			pScore === 5
+			  ? "素晴らしいです。あなたは野口に勝ちました。共有しましょう": "野口がこのゲームを制しました。次回も挑戦してね。";
+		  alert(winner);
+		  return true;
+		}
+		return false;
+	  }
+	</script>
+	 <div class="third-visual">
+		
+	 </div>
+	 
+<footer id="footer">
+
+	
+	
+	<p><small>Copyright © 2021 野口じゃんけん All Rights Reserved.</small></p>
+	
+	</footer>
+
+</body>
+</html>
