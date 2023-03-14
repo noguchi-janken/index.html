@@ -92,9 +92,9 @@
 	  </div>
 	  <h2>手を選んでください。<h2>
 	  <div class="action">
-		<input class="options" type="image" width=40 height=40 src="images/IMG_4505.png" value="グー" />
+		<input class="options" type="image" width=40 height=40 src="images/IMG_4505.png" value="IMG_4505" />
 		<input class="options" type="image" width=40 height=40 src="images/チョキ.png" value="チョキ" />
-		<input class="options" type="image" width=40 height=40 src="images/IMG_4510.png" value="パー" />
+		<input class="options" type="image" width=40 height=40 src="images/IMG_4510.png" value="IMG_4510" />
 	  </div>
 	</div>
 	<script>
@@ -106,7 +106,7 @@
 		option.addEventListener("click", function () {
 		  const pInput = this.value;
   
-		  const cOptions = ["グー", "パー", "チョキ"];
+		  const cOptions = ["IMG_4505", "IMG_4510", "チョキ"];
 		  const cInput = cOptions[Math.floor(Math.random() * 3)];
 		  
 		  updateMoves(pInput, cInput);
@@ -132,7 +132,7 @@
 		  return;
 		}
   
-		if (pInput === "グー") {
+		if (pInput === "IMG_4505") {
 		  if (cInput === "チョキ") {
 			alert(`${currentMatch}  あなたが勝ちました。`);
 			pScore++;
@@ -142,8 +142,8 @@
 		  }
 		}
 		//Check for Paper
-		else if (pInput === "パー") {
-		  if (cInput === "グー") {
+		else if (pInput === "IMG_4510") {
+		  if (cInput === "IMG_4505") {
 			alert(`${currentMatch}  あなたが勝ちました。`);
 			pScore++;
 		  } else {
@@ -153,7 +153,7 @@
 		}
 		//Check for Scissors
 		else if (pInput === "チョキ") {
-		  if (cInput === "パー") {
+		  if (cInput === "IMG_4510") {
 			alert(`${currentMatch}  あなたが勝ちました。`);
 			pScore++;
 		  } else {
