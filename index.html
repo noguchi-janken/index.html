@@ -16,7 +16,7 @@
 	<meta name="google-site-verification" content="8exRgDZkOQdCy1hOF3DMmbVHve_lfbkpN8ZoXfCA-uI" />
    <meta charset="utf-8">
    <title>野口じゃんけん</title>
-   <link rel = "icon" href = "images/野口じゃんけん.png" 
+   <link rel = "icon" href = "image/野口じゃんけん.png" 
         type = "image/x-icon">
 
    <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -37,7 +37,7 @@
 </head>
 <body>
    <header>
-	<img width=40 height=40 src="images/noguchi-janken-logo.png">
+	<img width=40 height=40 src="image/noguchi-janken-logo.png">
       <h1>
          <a href="https://noguchi-janken.github.io/index.html">野口じゃんけん</a>
       </h1>
@@ -83,18 +83,18 @@
 	 
 	  <div class="display-moves">
 		<div class="move">
-		  <img id="p-move" width=50 height=50 src="images/IMG_4505.png">
+		  <img id="p-move" width=60 height=60 src="image/グー.png">
 		</div>
 		<div class="separator">VS</div>
 		<div class="move">
-		  <img id="c-move" width=60 height=60 src="images/IMG_4505.png">
+		  <img id="c-move" width=60 height=60 src="image/グー.png">
 		</div>
 	  </div>
 	  <h2>手を選んでください。<h2>
 	  <div class="action">
-		<input class="options" type="image" width=40 height=40 src="images/IMG_4505.png" value="IMG_4505" />
-		<input class="options" type="image" width=40 height=40 src="images/チョキ.png" value="チョキ" />
-		<input class="options" type="image" width=40 height=40 src="images/IMG_4510.png" value="IMG_4510" />
+		<input class="options" type="image" width=40 height=40 src="image/グー.png" value="グー" />
+		<input class="options" type="image" width=40 height=40 src="image/チョキ.png" value="チョキ" />
+		<input class="options" type="image" width=40 height=40 src="image/パー.png" value="パー" />
 	  </div>
 	</div>
 	<script>
@@ -106,7 +106,7 @@
 		option.addEventListener("click", function () {
 		  const pInput = this.value;
   
-		  const cOptions = ["IMG_4505", "IMG_4510", "チョキ"];
+		  const cOptions = ["グー", "パー", "チョキ"];
 		  const cInput = cOptions[Math.floor(Math.random() * 3)];
 		  
 		  updateMoves(pInput, cInput);
@@ -120,8 +120,8 @@
 	  });
   
 	  function updateMoves(pInput, cInput){
-		document.getElementById("p-move").src = `images/${pInput}.png`;
-		document.getElementById("c-move").src = `images/${cInput}.svg`;
+		document.getElementById("p-move").src = `image/${pInput}.png`;
+		document.getElementById("c-move").src = `image/${cInput}.svg`;
 	  }
   
   
@@ -132,7 +132,7 @@
 		  return;
 		}
   
-		if (pInput === "IMG_4505") {
+		if (pInput === "グー") {
 		  if (cInput === "チョキ") {
 			alert(`${currentMatch}  あなたが勝ちました。`);
 			pScore++;
@@ -142,8 +142,8 @@
 		  }
 		}
 		//Check for Paper
-		else if (pInput === "IMG_4510") {
-		  if (cInput === "IMG_4505") {
+		else if (pInput === "パー") {
+		  if (cInput === "グー") {
 			alert(`${currentMatch}  あなたが勝ちました。`);
 			pScore++;
 		  } else {
@@ -153,7 +153,7 @@
 		}
 		//Check for Scissors
 		else if (pInput === "チョキ") {
-		  if (cInput === "IMG_4510") {
+		  if (cInput === "パー") {
 			alert(`${currentMatch}  あなたが勝ちました。`);
 			pScore++;
 		  } else {
